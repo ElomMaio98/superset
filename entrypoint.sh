@@ -2,10 +2,10 @@
 set -e
 
 export FLASK_APP=superset.app:create_app
-export SUPERSET_CONFIG_PATH=/app/superset_config.py
+export FLASK_ENV=production
 
 echo "Initializing Superset database..."
-superset db upgrade
+superset db upgrade --sql || true
 
 echo "Creating admin user..."
 superset fab create-admin \
