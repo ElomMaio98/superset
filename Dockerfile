@@ -12,8 +12,12 @@ RUN apt-get update && apt-get install -y \
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
+COPY superset_config.py .
+COPY entrypoint.sh .
+RUN chmod +x entrypoint.sh
+
 COPY . .
 
 EXPOSE 8088
 
-CMD ["gunicorn", "--bind", "0.0.0.0:8088", "--workers", "4", "superset.app:create_app()"]
+CMD ["./entrypoint.sh"]
