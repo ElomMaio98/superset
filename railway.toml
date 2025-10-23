@@ -3,7 +3,3 @@ builder = "dockerfile"
 
 [deploy]
 startCommand = "superset db upgrade && superset init && gunicorn --bind 0.0.0.0:8088 --workers 4 superset.app:create_app()"
-
-SUPERSET_SECRET_KEY=sua-chave-secreta-muito-longa-e-aleatoria
-SUPERSET_SQLALCHEMY_DATABASE_URI=postgresql://user:password@seu-postgres:5432/superset_db
-DATABASE_URL=DATABASE_URL=postgresql://dbuser:SuperStrongPassword123!@172.212.115.91:5432/turingdb
